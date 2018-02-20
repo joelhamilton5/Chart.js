@@ -68,6 +68,7 @@ module.exports = Element.extend({
 		var model = this._model;
 		var ctx = this._chart.ctx;
 		var pointStyle = vm.pointStyle;
+		var rotation = vm.pointRotation;
 		var radius = vm.radius;
 		var x = vm.x;
 		var y = vm.y;
@@ -101,6 +102,6 @@ module.exports = Element.extend({
 			ctx.fillStyle = color(ctx.fillStyle).alpha(ratio).rgbString();
 		}
 
-		helpers.canvas.drawPoint(ctx, pointStyle, radius, x, y);
+		helpers.canvas.drawPoint(ctx, pointStyle, radius, x, y, rotation);
 	}
 });
