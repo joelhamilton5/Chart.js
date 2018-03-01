@@ -106,6 +106,8 @@ module.exports = function(Chart) {
 					borderColor: custom.borderColor ? custom.borderColor : helpers.valueAtIndexOrDefault(dataset.pointBorderColor, index, pointElementOptions.borderColor),
 					borderWidth: custom.borderWidth ? custom.borderWidth : helpers.valueAtIndexOrDefault(dataset.pointBorderWidth, index, pointElementOptions.borderWidth),
 					pointStyle: custom.pointStyle ? custom.pointStyle : helpers.valueAtIndexOrDefault(dataset.pointStyle, index, pointElementOptions.pointStyle),
+					pointRadius: custom.pointRadius ? custom.pointRadius : helpers.valueAtIndexOrDefault(dataset.pointRadius, index, pointElementOptions.pointRadius),
+					pointRotation: custom.pointRotation ? custom.pointRotation : helpers.valueAtIndexOrDefault(dataset.pointRotation, index, pointElementOptions.pointRotation),
 
 					// Tooltip
 					hitRadius: custom.hitRadius ? custom.hitRadius : helpers.valueAtIndexOrDefault(dataset.pointHitRadius, index, pointElementOptions.hitRadius)
