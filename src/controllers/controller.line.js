@@ -148,6 +148,22 @@ module.exports = function(Chart) {
 			return borderWidth;
 		},
 
+		getPointRotation: function(point, index) {
+			var pointRotation = this.chart.options.elements.point.pointRotation;
+			var dataset = this.getDataset();
+			var custom = point.custom || {};
+
+			if (!isNaN(custom.pointRotation)) {
+				pointRotation = custom.pointRotation;
+			} else if (!isNaN(dataset.pointRotation) || helpers.isArray(dataset.pointRotation)) {
+				pointRotation = helpers.valueAtIndexOrDefault(dataset.pointRotation, index, pointRotation);
+			} else if (!isNaN(dataset.pointRotation)) {
+				pointRotation = dataset.pointRotation;
+			}
+
+			return pointRotation;
+		},
+
 		updateElement: function(point, index, reset) {
 			var me = this;
 			var meta = me.getMeta();
@@ -188,6 +204,7 @@ module.exports = function(Chart) {
 				backgroundColor: me.getPointBackgroundColor(point, index),
 				borderColor: me.getPointBorderColor(point, index),
 				borderWidth: me.getPointBorderWidth(point, index),
+                rotation: me.getPointRotation(point, index),
 				tension: meta.dataset._model ? meta.dataset._model.tension : 0,
 				steppedLine: meta.dataset._model ? meta.dataset._model.steppedLine : false,
 				// Tooltip

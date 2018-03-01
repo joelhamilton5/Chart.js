@@ -44,7 +44,7 @@ var exports = module.exports = {
 		}
 	},
 
-	drawPoint: function(ctx, style, radius, x, y) {
+	drawPoint: function(ctx, style, radius, x, y, rotation) {
 		var type, edgeLength, xOffset, yOffset, height, size;
 
 		if (style && typeof style === 'object') {
@@ -58,6 +58,12 @@ var exports = module.exports = {
 		if (isNaN(radius) || radius <= 0) {
 			return;
 		}
+
+		ctx.save();
+		ctx.translate(x, y);
+		ctx.rotate(rotation * Math.PI / 180);
+		x = 0;
+		y = 0;
 
 		switch (style) {
 		// Default includes circle
@@ -150,6 +156,7 @@ var exports = module.exports = {
 		}
 
 		ctx.stroke();
+		ctx.restore();
 	},
 
 	clipArea: function(ctx, area) {
